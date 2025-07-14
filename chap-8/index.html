@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Count Down App</title>
+  </head>
+  <body>
+    <form class="form-count-down">
+      <h1 class="form-count-down__title">Count Down App</h1>
+      <div>
+        <label>
+          Event Name
+          <input id="event-name" placeholder="Event name" required />
+        </label>
+      </div>
+      <div>
+        <label>
+          Event Day
+          <input id="event-day" type="date" placeholder="Event day" required />
+        </label>
+      </div>
+      <div>
+        <button type="submit">Start count down</button>
+      </div>
+    </form>
+    <b class="js-result-count-down">No Event</b>
+
+    <script src="./js/main.js"></script>
+  </body>
+</html>
