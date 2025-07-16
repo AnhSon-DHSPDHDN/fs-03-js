@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Management</title>
+  </head>
+  <body>
+    <form id="book-form" novalidate>
+      <h1>Book Management</h1>
+      <div>
+        <label for="">Author</label>
+        <input
+          id="author"
+          type="text"
+          placeholder="Author"
+          minlength="3"
+          required
+        />
+        <span class="error-validation"></span>
+      </div>
+      <div>
+        <label for="">Title</label>
+        <input
+          id="title"
+          type="text"
+          placeholder="Title"
+          minlength="3"
+          required
+        />
+        <span class="error-validation"></span>
+      </div>
+      <div>
+        <label for="">Create At</label>
+        <input id="create-at" type="date" required />
+        <span class="error-validation"></span>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+
+    <div>
+      <h1>List Book</h1>
+      <table>
+        <thead>
+          <tr>
+            <td>Author</td>
+            <td>Title</td>
+            <td>Create At</td>
+          </tr>
+        </thead>
+        <tbody class="js-tbody"></tbody>
+      </table>
+    </div>
+
+    <script src="./js/main.js"></script>
+  </body>
+</html>
