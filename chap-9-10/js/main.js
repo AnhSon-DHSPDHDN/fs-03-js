@@ -3,15 +3,24 @@ const inputAuthorEle = document.querySelector("#author");
 const inputTitleEle = document.querySelector("#title");
 const inputCreateAtEle = document.querySelector("#create-at");
 const inputElements = [inputAuthorEle, inputTitleEle, inputCreateAtEle];
-const booksList = [];
+let booksList = localStorage.getItem("books")
+  ? JSON.parse(localStorage.getItem("books"))
+  : [];
+
+const syncDataToLocalStorage = () => {
+  localStorage.setItem("books", JSON.stringify(booksList));
+};
 
 const renderBookList = () => {
   let rows = "";
-  booksList.forEach((bookItem) => {
+  booksList.forEach((bookItem, index) => {
     rows += `<tr>
       <td>${bookItem.author}</td>
       <td>${bookItem.title}</td>
       <td>${bookItem.createAt}</td>
+      <td>
+        <button onclick="deleteBook(${index})">Del</button>
+      </td>
     </tr>`;
   });
 
@@ -19,6 +28,12 @@ const renderBookList = () => {
   if (tbody) {
     tbody.innerHTML = rows;
   }
+};
+
+const deleteBook = (indexDel) => {
+  booksList = booksList.filter((book, index) => index !== indexDel);
+  syncDataToLocalStorage();
+  renderBookList();
 };
 
 const handleSubmit = (event) => {
@@ -40,6 +55,7 @@ const handleSubmit = (event) => {
       createAt: inputCreateAtEle.value,
     };
     booksList.push(newBook);
+    syncDataToLocalStorage();
     renderBookList();
     console.log("submit form success");
   } else {
@@ -58,4 +74,5 @@ const handleSubmit = (event) => {
   console.log(formEle.checkValidity(), "check validity");
 };
 
+renderBookList();
 formEle.addEventListener("submit", handleSubmit);
